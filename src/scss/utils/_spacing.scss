@@ -1,0 +1,53 @@
+@use "variables" as v;
+
+$spacers: (
+  "0": 0,
+  xxs: v.$spacer-xxs,
+  xs: v.$spacer-xs,
+  s: v.$spacer-s,
+  m: v.$spacer-m,
+  l: v.$spacer-l,
+  xl: v.$spacer-xl,
+  xxl: v.$spacer-xxl
+);
+
+$types: (
+  "m": "margin",
+  "p": "padding"
+);
+
+$sides: (
+  "": "",
+  t: "-top",
+  r: "-right",
+  b: "-bottom",
+  l: "-left"
+);
+
+//Classes for all spacers, types and sides
+@each $key-spacer, $factor in $spacers {
+  @each $key-type, $type in $types {
+    @each $key-side, $side in $sides {
+      .#{$key-type}#{$key-side}-#{$key-spacer} {
+        #{$type}#{$side}: $factor;
+      }
+    }
+
+    // Gorizontal spaces
+    .#{$key-type}x-#{$key-spacer} {
+      #{$type}-left: $factor;
+      #{$type}-right: $factor;
+    }
+
+    // Vertical spaces
+    .#{$key-type}y-#{$key-spacer} {
+      #{$type}-bottom: $factor;
+      #{$type}-top: $factor;
+    }
+  }
+
+  // Gaps
+  .gap-#{$key-spacer} {
+    gap: $factor;
+  }
+}
