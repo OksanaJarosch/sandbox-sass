@@ -1,0 +1,43 @@
+// For _flex.scss
+@mixin flex-center($is-column: false) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @if $is-column {
+        flex-direction: column;
+    }
+}
+
+// Placeholder for input
+@mixin placeholder {
+    &::placeholder {
+        @content;
+    }
+}
+
+// Responsiv font-sizes
+@mixin fluid-fs($min-w, $max-w, $min-fs, $max-fs) {
+    $u1: unit($min-w);
+    $u2: unit($max-w);
+    $u3: unit($min-fs);
+    $u4: unit($max-fs);
+
+    @if $u1 ==$u2 and $u1 ==$u3 and $u1 ==$u4 {
+        & {
+            font-size: $min-fs;
+
+            @media only screen and (min-width: $min-w) {
+                font-size: calc(#{$min-fs} + #{strip-unit($max-fs - $min-fs)} * ((100vw - #{$min-w}) / #{strip-unit($max-w - $min-w)}));
+            }
+
+            @media only screen and (min-width: $max-w) {
+                font-size: $max-fs;
+            }
+        }
+    }
+
+    @else {
+        @error "Incompatible units. Check mixin params";
+    }
+}

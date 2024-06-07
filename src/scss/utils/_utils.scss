@@ -1,0 +1,41 @@
+// display
+$d-values: none, inline, block, inline-block, flex, inline-flex, grid,
+  inline-grid;
+@each $value in $d-values {
+  .d-#{$value} {
+    display: $value;
+  }
+}
+
+// position
+$p-values: relative, absolute, fixed, sticky;
+@each $value in $p-values {
+  .p-#{$value} {
+    position: $value;
+  }
+}
+
+// Content for screen-readers
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+// Text-overflow
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// Text-center
+.text-center {
+  text-align: center;
+}

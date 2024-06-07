@@ -1,0 +1,40 @@
+@use "mixins" as *;
+
+// justify-content
+$j-values: start, end, center, stretch, between, around, evenly;
+@each $value in $j-values {
+  .justify-#{$value} {
+    @if ($value == start) or ($value == end) {
+      justify-content: flex-#{$value};
+    } @else if ($value == between) or ($value == around) or ($value == evenly) {
+      justify-content: space-#{$value};
+    } @else {
+      justify-content: $value;
+    }
+  }
+}
+
+// align-items
+$a-values: start, end, center, stretch;
+@each $value in $a-values {
+  .items-#{$value} {
+    @if ($value == start) or ($value == end) {
+      align-items: flex-#{$value};
+    } @else {
+      align-items: $value;
+    }
+  }
+}
+
+// Additional
+.flex-center {
+  @include flex-center();
+}
+
+.flex-center-column {
+  @include flex-center(column);
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
