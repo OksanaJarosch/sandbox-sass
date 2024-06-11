@@ -1,0 +1,19 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: fn.get-color("dark-secondary");
+    box-shadow: 0px 1px 0px 0px #292932 inset;
+
+    @include mix.mq("lg") {
+        grid-area: header;
+
+        justify-content: space-between;
+        padding: 24px 36px;
+    };
+};

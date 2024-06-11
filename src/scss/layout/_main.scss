@@ -1,0 +1,40 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+.main {
+    display: grid;
+    gap: 40px;
+    padding: 16px;
+    grid-template-areas: 
+    "welcome"
+    "co-workers"
+    "tasks"
+    "reports";
+
+    @include mix.mq("md") {
+        gap: 36px;
+        padding: 36px;
+
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+        "welcome welcome"
+        "co-workers co-workers"
+        "tasks reports";
+    };
+    
+        ;
+    @include mix.mq("lg") {
+        // layout grid position
+        grid-area: main;
+
+        // grid inside
+        grid-template-columns: repeat(auto-fit, minmax(455px, 629px));
+        grid-template-areas: 
+        "welcome welcome"
+        "co-workers tasks"
+        "co-workers reports";
+    };
+};
+
