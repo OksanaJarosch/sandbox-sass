@@ -1,0 +1,23 @@
+@use "../../../utilites/functions" as fn;
+
+@if index($btn-types, primary) {
+    .btn--primary {
+        background-color: fn.get-color("accent-primary");
+
+        &:active {
+                background-color: fn.get-color("accent-tertiary");
+            };
+        
+            @media (hover: hover) {
+                &:hover,
+                &:focus {
+                    background-color: fn.get-color("accent-secondary");
+                    box-shadow: 0px 4px 10px 0px rgba(240, 127, 46, 0.25);
+                };
+            };
+        
+            &[disabled] {
+                background-color: fn.get-color("light-secondary");
+            };
+    };
+};

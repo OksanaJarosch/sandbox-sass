@@ -1,0 +1,27 @@
+@use "../../../utilites/functions" as fn;
+
+@if index($btn-types, outlined) {
+    .btn--frame {
+        color: fn.get-color("accent-primary");
+        border-color: fn.get-color("accent-primary");
+
+        &:active {
+            color: fn.get-color("accent-tertiary");
+            border-color: fn.get-color("accent-tertiary");
+        };
+
+        @media (hover: hover) {
+
+            &:hover,
+            &:focus {
+                color: fn.get-color("accent-secondary");
+                border-color: fn.get-color("accent-secondary");
+            };
+        };
+
+        &[disabled] {
+            color: fn.get-color("light-secondary");
+            border-color: fn.get-color("light-secondary");
+        };
+    };
+};

@@ -1,0 +1,22 @@
+@use "../../../utilites/functions" as fn;
+
+@if index($btn-types, additional) {
+    .btn--secondary {
+
+        &:active {
+            color: fn.get-color("accent-tertiary");
+        };
+
+        @media (hover: hover) {
+
+            &:hover,
+            &:focus {
+                color: fn.get-color("accent-secondary");
+            };
+        };
+
+        &[disabled] {
+            color: fn.get-color("light-secondary");
+        };
+    };
+};
