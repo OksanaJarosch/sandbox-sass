@@ -1,0 +1,37 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+.menu-btn {
+    display: inline-flex;
+    align-items: center;
+    margin-right: auto;
+
+    color: fn.get-color("light-primary");
+
+    @include mix.mq("lg") {
+        display: none;
+    };
+
+    &-icon {
+        fill: currentColor;
+    };
+
+    .sidebar & {
+        @include mix.ease("slow", opacity, transform);
+        transition-delay: 800ms, 600ms;
+
+        position: absolute;
+        top: 16px;
+        right: -36px;
+
+        opacity: 0;
+        transform: rotate(180deg);
+    };
+
+    .sidebar.is-open & {
+        opacity: 1;
+        transform: rotate(0deg);
+    };
+};

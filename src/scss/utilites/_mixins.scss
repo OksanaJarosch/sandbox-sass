@@ -72,8 +72,8 @@
 
 // easing/animation
 @mixin ease($ease, $properties...) {
-    @if map.has-key(var.$easing, $ease) {
-        $ease: map.get(var.$easing, §ease);
+    @if map.has-key(var.$easings, $ease) {
+        $ease: map.get(var.$easings, $ease);
 
         transition: $ease;
     } @else {

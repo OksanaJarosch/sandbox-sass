@@ -1,0 +1,66 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+.menu {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    background-color: fn.get-color("dark-primary");
+    max-width: 248px;
+
+    @include mix.mq("lg", "max") {
+        @include mix.ease("fast", transform);
+
+        transform: translateX(-100%);
+        background-color: fn.get-color("dark");
+
+        .sidebar.is-open & {
+            transform: translateX(0);
+            transition-delay: 300ms;
+        };
+    };
+};
+
+.menu-list {
+    border-top: 1px solid fn.get-color("dark-tertiary");
+};
+
+.menu-link {
+    @extend %details !optional;
+    @include mix.ease("fast", color);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 20px;
+
+    &:focus, &:hover {
+        color: fn.get-color("light-primary");
+    };
+
+    &.current {
+        color: fn.get-color("light-primary");
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            display: block;
+            width: 4px;
+            height: 32px;
+            border-radius: 0px 100px 100px 0px;
+            background-color: fn.get-color("light-primary");
+        };
+    };
+};
+
+.menu-icon {
+    fill: currentColor;
+};

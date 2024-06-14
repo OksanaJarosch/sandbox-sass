@@ -1,0 +1,22 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+.notification {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 20px;
+    padding: 0 10px;
+
+    color: fn.get-color("light-primary");
+    border-radius: 12px;
+    background-color: fn.get-color("danger");
+    opacity: 0;
+
+    &.is-notify  {
+        opacity: 1;
+    }
+};
