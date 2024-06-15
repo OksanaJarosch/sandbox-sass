@@ -1,0 +1,36 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+.notification-btn {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    color: fn.get-color("light-tertiary");
+
+    &-icon {
+        fill: currentColor;
+    };
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        display: block;
+        width: 8px;
+        height: 8px;
+        background-color: transparent;
+        border-radius: 50%;
+    };
+
+    &[data-notify="true"] {
+        &::after {
+        background-color: fn.get-color("danger");
+    }};
+};
