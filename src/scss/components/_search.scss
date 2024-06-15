@@ -1,0 +1,55 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+.search-field {
+    @include mix.ease("fast", width, color);
+
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    gap: 12px;
+
+    color: fn.get-color("light-tertiary");
+    overflow: hidden;
+
+    &:focus-within {
+        color: fn.get-color("light-primary");
+    };
+
+    @include mix.mq("lg") {
+        margin-right: auto;
+    };
+
+    @include mix.mq("lg", "max") {
+        width: 20px;
+
+        &:focus-within {
+            width: 200px;
+        };
+    };
+};
+
+.search-icon {
+    flex-shrink: 0;
+    fill: currentColor;
+};
+
+.search-input {
+    @extend %details;
+
+    min-width: 165px;
+    min-height: 20px;
+
+    @include mix.mq("lg", "max") {
+        @include mix.ease("fast", opacity);
+
+        opacity: 0;
+
+        &:focus {
+            opacity: 1;
+            transition-delay: 300ms;
+        };
+    };
+};
