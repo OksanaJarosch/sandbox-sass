@@ -174,6 +174,13 @@ body {
   letter-spacing: 0.03em;
 }
 
+.search-input, .menu-link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: 0.04em;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   color: #B5B5BE;
@@ -509,6 +516,76 @@ summary {
       -ms-transform: rotate(0deg);
           transform: rotate(0deg);
 }
+
+.notification-btn {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  color: #92929D;
+}
+.notification-btn-icon {
+  fill: currentColor;
+}
+.notification-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+.notification-btn[data-notify=true]::after {
+  background-color: #FC5A5A;
+}
+
+.search-field {
+  -webkit-transition: 300ms ease;
+  -moz-transition: 300ms ease;
+  transition: 300ms ease;
+  -webkit-transition-property: width, color;
+  -moz-transition-property: width, color;
+  transition-property: width, color;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center;
+  margin-right: 24px;
+  gap: 12px;
+  color: #92929D;
+  overflow: hidden;
+}
+.search-field:focus-within {
+  color: #FAFAFB;
+}
+
+.search-icon {
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
+  fill: currentColor;
+}
+
+.search-input {
+  min-width: 165px;
+  min-height: 20px;
+}
+
 @media only screen and (min-width: 768px){
   .main {
     gap: 36px;
@@ -517,6 +594,7 @@ summary {
     grid-template-areas: "welcome welcome" "co-workers co-workers" "tasks reports";
   }
 }
+
 @media only screen and (min-width: 1200px){
   .header {
     grid-area: header;
@@ -546,7 +624,11 @@ summary {
   .menu-btn {
     display: none;
   }
+  .search-field {
+    margin-right: auto;
+  }
 }
+
 @media only screen and (max-width: 1199.98px){
   .sidebar {
     position: fixed;
@@ -589,7 +671,29 @@ summary {
        -moz-transition-delay: 300ms;
             transition-delay: 300ms;
   }
+  .search-field {
+    width: 20px;
+  }
+  .search-field:focus-within {
+    width: 200px;
+  }
+  .search-input {
+    -webkit-transition: 300ms ease;
+    -moz-transition: 300ms ease;
+    transition: 300ms ease;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    transition-property: opacity;
+    opacity: 0;
+  }
+  .search-input:focus {
+    opacity: 1;
+    -webkit-transition-delay: 300ms;
+       -moz-transition-delay: 300ms;
+            transition-delay: 300ms;
+  }
 }
+
 @media (hover: hover){
   .btn--primary:hover, .btn--primary:focus {
     background-color: #F15C27;
