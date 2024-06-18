@@ -1,19 +1,34 @@
 @use "btn/btn" as btn with ($btn-layer-spacing: 4px);
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
 
 .welcome {
     grid-area: welcome;
-}
 
-.page-title {}
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    row-gap: 16px;
 
-.page-title-accent {}
+    @include mix.mq("lg", "max") {
+        flex-direction: column;
+        align-items: flex-start;
+    };
+};
 
-.welcome-btn {}
+.page-title {
+    &-accent {
+        @extend %section-title;
 
-.btn {}
+        display: block;
+        margin-bottom: 8px;
+        color: fn.get-color("light-primary");
 
-.btn--primary {}
-
-.btn-icon {}
-
-.btn-inner {}
+        @include mix.mq("lg") {
+            margin-bottom: 16px;
+        };
+    };
+};
