@@ -1,0 +1,81 @@
+@use "../../utilites/placeholders";
+@use "../../utilites/variables" as var;
+@use "../../utilites/functions" as fn;
+@use "../../utilites/mixins" as mix;
+
+.co-workers {
+    grid-area: co-workers;
+
+    @include mix.mq("xl") {
+        padding: 20px;
+        background-color: fn.get-color("dark-tertiary");
+        border-radius: 12px;
+    };
+};
+
+.co-workers-wrapper {
+    max-height: 388px;
+    padding: 16px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    background-color: fn.get-color("dark-tertiary");
+
+    @include mix.mq("xl") {
+        max-height: 400px;
+        padding: 24px;
+        margin-bottom: 32px;
+        border-radius: 12px;
+        background-color: fn.get-color("dark-secondary");
+    };
+};
+
+.co-workers-title {
+    @extend %details;
+
+    margin-bottom: 28px;
+
+    @include mix.mq("xl") {
+        margin-bottom: 36px;
+    };
+
+    span {
+        @extend %accent-text;
+        color: fn.get-color("light");
+    };
+};
+
+.co-workers-container {
+    @include mix.scroll-bar;
+
+    max-height: 296px;
+    overflow-y: auto;
+    margin-right: -14px;
+};
+
+.person {}
+
+.person-thumb {}
+
+.person-avatar {}
+
+.person-caption {}
+
+.board-right {}
+
+.board-tag {}
+
+.badge-warning {}
+
+.badge-danger {}
+
+.hide {}
+
+.badge-success {}
+
+.co-workers-btn {}
+
+.btn {}
+
+.btn--secondary {}
+
+.btn-inner {}

@@ -1,0 +1,20 @@
+@use "../../utilites/placeholders";
+@use "../../utilites/variables" as var;
+@use "../../utilites/functions" as fn;
+@use "../../utilites/mixins" as mix;
+
+.co-workers-board {
+    margin-bottom: 20px;
+};
+
+.board {}
+
+.board-item {}
+
+.board-left {}
+
+.board-caption {}
+
+.board-details {}
+
+.board-coworker {}
