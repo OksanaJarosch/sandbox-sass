@@ -1,6 +1,6 @@
 # Dashboard Styling Project
 
-![screenshot](./demo/dashboard.jpg)
+![screenshot](./demo/dashboard.png)
 
 ## Overview
 
