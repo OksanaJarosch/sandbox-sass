@@ -7,14 +7,69 @@
     margin-bottom: 20px;
 };
 
-.board {}
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+};
 
-.board-item {}
+.board-item {
+    @extend %section-frame;
 
-.board-left {}
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    background-color: fn.get-color('dark-tertiary');
 
-.board-caption {}
+    @include mix.mq('xl') {
+        background-color: fn.get-color('dark-secondary');
+    };
 
-.board-details {}
+    &.hide {
+        display: none;
+    };
+};
 
-.board-coworker {}
+.board-caption {
+    @extend %accent-text;
+
+    margin-bottom: 8px;
+    color: fn.get-color('light-primary');
+};
+
+.board-details {
+    @extend %details;
+
+    margin-bottom: 20px;
+    color: fn.get-color('light');
+
+    time {
+        color: fn.get-color('light-secondary');
+    }
+};
+
+.person {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+};
+
+.person-thumb {
+    @include mix.frame(24px, $is-circle: true);
+};
+
+.person-caption {
+    @extend %details;
+};
+
+.board-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+};
+
+.board-tag {
+    @extend %details;
+    color: fn.get-color('light-secondary');
+};
