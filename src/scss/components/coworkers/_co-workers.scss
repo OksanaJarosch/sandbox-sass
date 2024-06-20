@@ -50,11 +50,15 @@
     max-height: 296px;
     overflow-y: auto;
     margin-right: -14px;
+    padding-right: 16px;
 };
 
 
 
-.co-workers-btn {}
+.co-workers-btn {
+    display: block;
+    margin: 0 auto;
+}
 
 .btn {}
 

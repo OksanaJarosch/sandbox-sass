@@ -1,31 +1,120 @@
+@use "../utilites/placeholders";
+@use "../utilites/variables" as var;
+@use "../utilites/functions" as fn;
+@use "../utilites/mixins" as mix;
+
+$reports-status: (
+    'success': 'up',
+    'warning': 'dash',
+    'danger': 'down',
+);
+
 .reports {
+    @extend %section-frame;
+
     grid-area: reports;
-}
 
-.reports-title {}
+    min-width: 340px;
+    background-color: fn.get-color('dark-tertiary');
+};
 
-.reports-list {}
+.reports-title {
+    @extend %details;
+    
+    margin-bottom: 36px;
+    color: fn.get-color('light-secondary');
 
-.reports-item {}
+    span {
+        @extend %accent-text;
+        color: fn.get-color('light-primary');
+    };
+};
 
-.reports-staff {}
+.reports-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
 
-.staff {}
+    @include mix.mq('md') {
+        gap: 32px;
+    };
 
-.staff-thumb {}
+    &:not(:last-child) {
+        margin-bottom: 28px;
+    };
+};
 
-.staff-avatar {}
+.reports-staff {
+    flex-grow: 1;
+    flex-shrink: 0;
+};
 
-.staff-caption {}
+.staff {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+};
 
-.reports-bar {}
+.staff-thumb {
+    @include mix.frame(32px, $is-circle: true);
+};
 
-.progress-bar {}
+.staff-caption {
+    @extend %details;
+    color: fn.get-color('light-secondary');
+};
 
-.reports-icon {}
+.reports-bar {
+    width: calc(100% - 224px);
+    height: 4px;
+    border-radius: 2px;
 
-.up {}
+    @each $key, $value in $reports-status {
+        [data-status='#{$value}'] & {
 
-.dash {}
+            // Mozilla browser
+            &[value] {
+                background-color: rgba(fn.get-color($key), 0.2);
+            };
 
-.down {}
+            &::-mor-progress-bar {
+                background-color: rgba(fn.get-color($key), 1);
+            };
+
+            // Chrome, Safari, Opera browser
+            &::-webkit-progress-bar {
+                background-color: rgba(fn.get-color($key), 0.2);
+                border-radius: 2px;
+            };
+
+            &::-webkit-progress-value {
+                background-color: rgba(fn.get-color($key), 1);
+                border-radius: 2px;
+            };
+        };
+    };
+};
+
+.reports-icon {
+    flex-shrink: 0;
+    
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 4px;
+    
+    use {
+        opacity: 0;
+        fill: fn.get-color('light-primary');
+    };
+
+    @each $key, $value in $reports-status {
+        [data-status='#{$value}'] & {
+            background-color: fn.get-color($key);
+
+            .#{$value} {
+                opacity: 1;
+            };
+        };
+    };
+};
